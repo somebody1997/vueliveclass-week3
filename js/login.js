@@ -4,8 +4,8 @@ const app = createApp({
     data(){
         return {
             data:{
-                "username":"",
-                "password":""
+                username: "",
+                password: "",
             },
             apiUrl:"https://vue3-course-api.hexschool.io/",
             apiPath:"vueliveclass"
@@ -18,22 +18,18 @@ const app = createApp({
                 console.log(res);
                 if(res.data.success){
                     const {token,expired} = res.data;
-                    console.log(token,expired);
+                    //console.log(token,expired);
                     document.cookie = `hexToken=${token};expires=${new Date(expired)}; path=/`;
                     window.location = 'productslist.html';
                 }else{
                     console.log(res.data.message);
                 }
-            }).catch((err) =>{
-                console.log(err);
+            }).catch((error) =>{
+                console.log(error);
             });
         }
     },
-    mounted(){
-
-    },
-});
-app.mount('#app');
+}).mount('#app');
 
 
 
